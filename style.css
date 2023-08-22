@@ -1,0 +1,10 @@
+* {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: #eef1ff;
+  box-sizing: border-box;
+}
+
+.header__title, .header__descr {
+  display: flex;
+  justify-content: center;
+}
