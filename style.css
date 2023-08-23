@@ -2,9 +2,36 @@
   font-family: 'Plus Jakarta Sans', sans-serif;
   background-color: #eef1ff;
   box-sizing: border-box;
+  margin: 0 20px 0 20px;
 }
 
-.header__title, .header__descr {
+.header__title{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 25px;
   display: flex;
   justify-content: center;
 }
+
+#span {
+  font-weight:bold;
+  color:darkslateblue;
+}
+
+.metar {
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+}
+.metar__title {
+  font-size: 20px;
+}
+
+#btn {
+  margin-top: 30px;
+}
+
+.metar__output {
+  display: block;  
+}
+
