@@ -12,8 +12,41 @@ decodeBtn?.addEventListener('click', () => {
 });
 
 function decodeMETAR(metarCode: string): string {
-    //my future code
-    return 'future result'
+    function decodeMETAR(metarCode) {
+        const decodedMetar = {
+            airport: '',
+            timestamp: '',
+            visibility: '',
+            wind: '',
+            cloudCover: '',
+            temperature: '',
+            dewPoint: '',
+            pressure: '',
+            remarks: ''
+        };
+    
+        // Разбиваем код METAR на отдельные секции, используя регулярные выражения
+        const sections = metarCode.match(/([A-Z\d]+ [A-Z\d]+|[A-Z\d]+|[-+]?\d+\.\d+|\d+)/g);
+    
+        // Расшифровываем аэропорт и временную метку
+        if (sections && sections.length >= 2) {
+            decodedMetar.airport = sections[0];
+            decodedMetar.timestamp = sections[1];
+        }
+    
+        // Здесь будет код для расшифровки других параметров METAR,
+        // таких как видимость, ветер, облачность и так далее.
+    
+        // Вот пример:
+        // if (sections && sections.length >= 4) {
+        //     decodedMetar.visibility = sections[2];
+        //     decodedMetar.wind = sections[3];
+        // }
+    
+        // Возвращаем объяснение в виде строки
+        return JSON.stringify(decodedMetar, null, 2); // Возвращаем JSON-строку для примера
+    }
+    
 }
 
 enum CloudTypes {
