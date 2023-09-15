@@ -11,8 +11,10 @@ decodeBtn?.addEventListener('click', () => {
     }
 });
 
+
+
 function decodeMETAR(metarCode: string): string {
-    function decodeMETAR(metarCode) {
+    function decodeInternalMETAR(metarCode) {
         const decodedMetar = {
             airport: '',
             timestamp: '',
@@ -37,16 +39,31 @@ function decodeMETAR(metarCode: string): string {
         // Здесь будет код для расшифровки других параметров METAR,
         // таких как видимость, ветер, облачность и так далее.
     
-        // Вот пример:
-        // if (sections && sections.length >= 4) {
-        //     decodedMetar.visibility = sections[2];
-        //     decodedMetar.wind = sections[3];
-        // }
-    
+        if (sections && sections.length >= 4) {
+            decodedMetar.visibility = sections[2];
+            decodedMetar.wind = sections[3];
+        }
+        // Расшифровываем аэропорт и временную метку
+        if (sections && sections.length >= 2) {
+            decodedMetar.airport = sections[0];
+            decodedMetar.timestamp = sections[1];
+        }
+        
+        // Расшифровываем видимость и ветер
+        if (sections) {
+            for (let i = 2; i < sections.length; i++) {
+                const section = sections[i];
+                if (section.endsWith('SM')) {
+                    decodedMetar.visibility = section;
+                } else if (section.endsWith('KT')) {
+                    decodedMetar.wind = section;
+                }
+            }
+        }
         // Возвращаем объяснение в виде строки
         return JSON.stringify(decodedMetar, null, 2); // Возвращаем JSON-строку для примера
     }
-    
+    return decodeInternalMETAR(metarCode);
 }
 
 enum CloudTypes {
