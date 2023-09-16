@@ -11,8 +11,6 @@ decodeBtn?.addEventListener('click', () => {
     }
 });
 
-
-
 function decodeMETAR(metarCode: string): string {
     function decodeInternalMETAR(metarCode) {
         const decodedMetar = {
@@ -58,6 +56,30 @@ function decodeMETAR(metarCode: string): string {
                 } else if (section.endsWith('KT')) {
                     decodedMetar.wind = section;
                 }
+            }
+        }
+        for (let i = 0; i < sections.length; i++) {
+            if (sections[i] === 'CAVOK') {
+                decodedMetar.cloudCover = 'Ceiling And Visibility OK';
+                break;
+            } else if (sections[i] === 'NOSIG') {
+                decodedMetar.cloudCover = 'No significant change';
+                break;
+            } else if (sections[i] === 'CLR') {
+                decodedMetar.cloudCover = 'Clear';
+                break;
+            } else if (sections[i] === 'FEW') {
+                decodedMetar.cloudCover = 'Few';
+                break;
+            } else if (sections[i] === 'SCT') {
+                decodedMetar.cloudCover = 'Scattered';
+                break;
+            } else if (sections[i] === 'BKN') {
+                decodedMetar.cloudCover = 'Broken';
+                break;
+            } else if (sections[i] === 'OVC') {
+                decodedMetar.cloudCover = 'Overcast';
+                break;
             }
         }
         // Возвращаем объяснение в виде строки
