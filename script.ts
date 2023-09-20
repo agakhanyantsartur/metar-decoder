@@ -58,6 +58,15 @@ function decodeMETAR(metarCode: string): string {
                 }
             }
         }
+        //Проверка и вывод температуры
+        for (let i = 0; i < sections.length; i++) {
+            if (sections[i].endsWith('/')) {
+                const temp = sections[i];
+                const dewPoint = sections[i + 1];
+                decodedMetar.temperature = `Temperature: ${temp}°C, Dew Point: ${dewPoint}°C`;
+                break;
+            }
+        }
         for (let i = 0; i < sections.length; i++) {
             if (sections[i] === 'CAVOK') {
                 decodedMetar.cloudCover = 'Ceiling And Visibility OK';
