@@ -65,6 +65,10 @@ function decodeMETAR(metarCode: string): string {
                 const dewPoint = sections[i + 1];
                 decodedMetar.temperature = `Temperature: ${temp}°C, Dew Point: ${dewPoint}°C`;
                 break;
+            } else {
+                const temp = null;
+                const dewpoint = null;
+                console.log("Enter the correct weather input");
             }
         }
         for (let i = 0; i < sections.length; i++) {
