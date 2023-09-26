@@ -11,18 +11,18 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <p class="header__title">This is the METAR<span id="span">(METeorological Aerodrome Report)</span>decoder</p>
-  <div class="metar">
-    <div class="metar__descr">
-      <label for="exampleFormControlInput1">Input the Metar code below</label>
-      <input type="text" class="form-control" id="metarCode">
-    </div>
-    <button id="btn"type="button" class="btn btn-primary">Decode</button>
-    <div class="metar__output">
-      <label for="exampleFormControlTextarea1">Here is your METAR explanation</label>
-      <textarea class="form-control" id="metarDecode" rows="3"></textarea>
-    </div>
-  </div>
+    <div class="container">
+        <h1 class="title">METAR Decoder</h1>
+        <div class="metar-form">
+            <label for="metarCode" class="label">Enter METAR Code:</label>
+            <input type="text" id="metarCode" class="input" placeholder="e.g., METAR KJFK 011751Z 23012KT 10SM BKN250 22/16 A3013 RMK AO2 SLP202 T02220156">
+            <button id="decodeButton" class="button">Decode</button>
+        </div>
+        <div class="metar-result">
+            <h2 class="result-title">Decoded METAR:</h2>
+            <pre id="result" class="result-text"></pre>
+        </div>
+      </div>
   <script src="script.ts"></script>
 </body>
 </html>
